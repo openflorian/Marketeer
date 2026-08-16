@@ -1,0 +1,18 @@
+{
+  "name": "@niche-engine/edge-workers",
+  "version": "1.0.0",
+  "description": "Cloudflare Workers - Edge-Level SSR, Tracking, A/B Testing",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "dependencies": {
+    "hono": "latest",
+    "@hono/cloudflare-workers": "latest"
+  },
+  "devDependencies": {
+    "wrangler": "latest",
+    "@cloudflare/workers-types": "latest"
+  }
+}

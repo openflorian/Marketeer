@@ -1,0 +1,25 @@
+{
+  "name": "@niche-engine/cms",
+  "version": "1.0.0",
+  "description": "Payload CMS 3 - Affiliate Management Hub",
+  "type": "module",
+  "scripts": {
+    "dev": "payload dev",
+    "build": "payload build",
+    "seed": "payload seed",
+    "migrate": "payload migrate"
+  },
+  "dependencies": {
+    "payload": "^3.0.0",
+    "@payloadcms/db-postgres": "^3.0.0",
+    "@payloadcms/richtext-lexical": "^3.0.0",
+    "express": "^4.18.0",
+    "dotenv": "^16.0.0",
+    "bcryptjs": "^2.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.0",
+    "@types/express": "^4.17.0",
+    "tsx": "^4.0.0"
+  }
+}

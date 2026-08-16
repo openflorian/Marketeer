@@ -1,0 +1,122 @@
+---
+// pages/index.astro - NicheEngine Storefront Homepage
+import Layout from '../layouts/Base.astro';
+import ProductShowcase from '../components/ProductShowcase.astro';
+import GamificationZone from '../components/GamificationZone.astro';
+import AIRecommendationZone from '../components/AIRecommendationZone.astro';
+
+const pageTitle = "NicheEngine - Elite Tech Storefront";
+const pageDescription = "Kuratierte Hardware & Software-Schätze für Power-User, optimiert mit KI-getriebenen Empfehlungen und Predictive Ranking";
+
+// Statische Produktdaten (werden später von CMS dynamic geladen)
+const featuredProducts = [
+  {
+    id: "p_qm_keyboard_v4",
+    title: "QuantumMech Keyboard v4",
+    category: "Peripherals",
+    trendScore: 94,
+    forecastGrowth: 1.5,
+    epcValue: 2.45,
+    description: "Mechanische Tastatur mit selbstheilenden Schaltern",
+    image: "⌨️",
+    affiliateNetwork: "amazon"
+  },
+  {
+    id: "p_ai_node_mini",
+    title: "Self-Hosted AI Node Mini",
+    category: "Hardware",
+    trendScore: 78,
+    forecastGrowth: 2.1,
+    epcValue: 8.75,
+    description: "Local LLM Server mit optimierter Inference",
+    image: "🧠",
+    affiliateNetwork: "awin"
+  }
+];
+
+// Meta-Tags für SEO
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<Layout title={pageTitle} description={pageDescription} canonical={canonicalURL.toString()}>
+  <main class="relative z-10 bg-elite-dark min-h-screen">
+    <!-- Dynamischer Maus-Glow (Preact Island für Performance) -->
+    <MouseGlowEffect client:load />
+
+    <!-- Header -->
+    <header class="sticky top-0 z-40 backdrop-blur-md bg-elite-dark/80 border-b border-elite-accent/10">
+      <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+        <div>
+          <h1 class="text-3xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">
+            // NICHE_ENGINE_V1
+          </h1>
+          <p class="text-xs text-gray-500 font-mono">Affiliate-Optimiertes CMS für Elite-Publisher</p>
+        </div>
+        <nav class="flex gap-6 text-sm">
+          <a href="#showcase" class="hover:text-indigo-400 transition">Produkte</a>
+          <a href="#gamification" class="hover:text-indigo-400 transition">Challenges</a>
+          <a href="#stats" class="hover:text-indigo-400 transition">Analytics</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container mx-auto px-4 py-16">
+      <!-- Hero Section mit Hero-Headline -->
+      <section class="mb-20 text-center">
+        <h2 class="text-5xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
+          Die <span class="text-gradient">Schnittstelle</span> zwischen Technik und Monetarisierung
+        </h2>
+        <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+          Eine intelligente Affiliate-Plattform, die automatisch hochrentable Produkte mit wissenschaftlich validiertem Conversions-Trigger promotet. Machine Learning trifft auf Psychologie.
+        </p>
+        <div class="flex gap-4 justify-center">
+          <button class="px-8 py-3 bg-indigo-600 hover:bg-indigo-700 rounded-lg font-semibold transition">
+            Jetzt Erkunden
+          </button>
+          <button class="px-8 py-3 border border-indigo-500/40 hover:border-indigo-500/80 rounded-lg font-semibold transition">
+            Dokumentation
+          </button>
+        </div>
+      </section>
+
+      <!-- Gamification Zone -->
+      <GamificationZone client:load />
+
+      <!-- Product Showcase mit AI-Ranking -->
+      <section id="showcase" class="mb-20">
+        <ProductShowcase products={featuredProducts} />
+      </section>
+
+      <!-- AI Recommendation Engine -->
+      <AIRecommendationZone client:load />
+
+      <!-- Stats & Performance Metrics -->
+      <section id="stats" class="grid grid-cols-1 md:grid-cols-4 gap-6 mt-20">
+        {[
+          { label: "Core Web Vitals", value: "98", unit: "Score" },
+          { label: "Ad Revenue Uplift", value: "450", unit: "%" },
+          { label: "Affiliate EPC", value: "+65", unit: "%" },
+          { label: "Conversion Rate", value: "8.2", unit: "%" }
+        ].map(stat => (
+          <div class="glass-card p-6 rounded-xl text-center">
+            <div class="text-sm text-gray-500 font-mono mb-2">{stat.label}</div>
+            <div class="text-4xl font-bold text-indigo-400">
+              {stat.value}{stat.unit === "Score" ? "" : stat.unit}
+            </div>
+            <div class="text-xs text-gray-600 mt-2">{stat.unit}</div>
+          </div>
+        ))}
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400;
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10;
+  }
+</style>
