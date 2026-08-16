@@ -1,0 +1,35 @@
+name = "niche-engine-workers"
+type = "javascript"
+main = "src/worker.ts"
+compatibility_date = "2024-01-01"
+
+[env.production]
+routes = [
+  { pattern = "example.com/api/*", zone_name = "example.com" },
+  { pattern = "example.com/go/*", zone_name = "example.com" },
+  { pattern = "example.com/guard/*", zone_name = "example.com" },
+]
+
+[env.development]
+routes = [
+  { pattern = "localhost:8787/*" },
+]
+
+[[kv_namespaces]]
+binding = "NICHE_KV"
+id = "your-kv-namespace-id"
+
+# Environment Variables
+[env.production.vars]
+CMS_API = "https://cms.example.com/api"
+GTM_CONTAINER_ID = "GTM-XXXXXXX"
+IP_SALT = "your-ip-salt-value"
+
+[env.development.vars]
+CMS_API = "http://localhost:3000/api"
+GTM_CONTAINER_ID = "GTM-DEV"
+IP_SALT = "dev-salt"
+
+# Performance & Limits
+[limits]
+cpu_ms = 50  # Schnelle Responses nur (50ms max)

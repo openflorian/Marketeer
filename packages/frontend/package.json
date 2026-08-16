@@ -1,0 +1,24 @@
+{
+  "name": "@niche-engine/frontend",
+  "version": "1.0.0",
+  "description": "Astro 5 + Preact Ultra-Performance Storefront",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "analyze": "wc-bundle astro"
+  },
+  "dependencies": {
+    "astro": "^4.1.0",
+    "preact": "^10.19.0",
+    "preact/compat": "^10.19.0",
+    "@preact/signals": "^1.2.0"
+  },
+  "devDependencies": {
+    "@astrojs/preact": "latest",
+    "@astrojs/cloudflare": "latest",
+    "unocss": "latest",
+    "typescript": "^5.3.0"
+  }
+}

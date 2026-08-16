@@ -1,0 +1,114 @@
+---
+// layouts/Base.astro
+interface Props {
+  title: string;
+  description?: string;
+  canonical?: string;
+}
+
+const { title, description = "NicheEngine - Elite Affiliate CMS", canonical } = Astro.props;
+
+// Preload kritische Ressourcen für LCP
+const preloadFonts = [
+  { href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap', as: 'style' },
+];
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    
+    <!-- Canonical für SEO -->
+    {canonical && <link rel="canonical" href={canonical} />}
+
+    <!-- Preload kritische Assets für Core Web Vitals -->
+    {preloadFonts.map(font => (
+      <link rel="preload" {...font} />
+    ))}
+
+    <!-- Open Graph (Social Media Sharing) -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
+    <!-- Icons -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%236366f1'>₦</text></svg>" />
+
+    <!-- Favicon alternative -->
+    <meta name="theme-color" content="#0b0f19" />
+
+    <!-- Server-Side Tracking (Cloudflare Worker endpoint) -->
+    <script>
+      // Non-blocking tracking beacon
+      window.addEventListener('load', () => {
+        if (navigator.sendBeacon) {
+          navigator.sendBeacon('/api/track', JSON.stringify({
+            event: 'pageload',
+            timestamp: new Date().toISOString(),
+            url: window.location.pathname
+          }));
+        }
+      });
+    </script>
+
+    <!-- Font system (optimiert für Webperf) -->
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+    </style>
+
+    <title>{title}</title>
+  </head>
+  <body class="bg-elite-dark text-gray-100 font-sans">
+    <!-- Struktur für Page Content -->
+    <slot />
+
+    <!-- Footer -->
+    <footer class="border-t border-elite-accent/10 bg-elite-darker/50 mt-20">
+      <div class="container mx-auto px-4 py-12">
+        <div class="grid grid-cols-3 gap-8 mb-8">
+          <div>
+            <h3 class="font-bold mb-4">Produkt</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-indigo-400 transition">Features</a></li>
+              <li><a href="#" class="hover:text-indigo-400 transition">Pricing</a></li>
+              <li><a href="#" class="hover:text-indigo-400 transition">Updates</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-4">Dokumentation</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-indigo-400 transition">API Docs</a></li>
+              <li><a href="#" class="hover:text-indigo-400 transition">Guides</a></li>
+              <li><a href="#" class="hover:text-indigo-400 transition">Tutorials</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-bold mb-4">Legal</h3>
+            <ul class="space-y-2 text-sm text-gray-400">
+              <li><a href="#" class="hover:text-indigo-400 transition">Impressum</a></li>
+              <li><a href="#" class="hover:text-indigo-400 transition">Datenschutz</a></li>
+              <li><a href="#" class="hover:text-indigo-400 transition">Terms</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-elite-accent/5 text-center text-sm text-gray-500">
+          <p>&copy; 2026 NicheEngine. Elite Publisher Technology. Built with Astro + Cloudflare Edge.</p>
+        </div>
+      </div>
+    </footer>
+
+    <style>
+      :root {
+        color-scheme: dark;
+      }
+    </style>
+  </body>
+</html>

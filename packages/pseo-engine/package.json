@@ -1,0 +1,15 @@
+{
+  "name": "@niche-engine/pseo-engine",
+  "version": "1.0.0",
+  "description": "Programmatic SEO Generator - Auto-generates thousands of optimized product comparison pages",
+  "type": "module",
+  "scripts": {
+    "generate": "bun run src/generator.ts",
+    "validate": "bun run src/validator.ts"
+  },
+  "dependencies": {
+    "zod": "^3.22.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0"
+  }
+}
