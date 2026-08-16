@@ -1,0 +1,62 @@
+[
+  {
+    "id": "prod_001",
+    "title": "Classic White T-Shirt",
+    "description": "100% cotton white t-shirt. Comfortable and breathable. Available in S/M/L/XL.",
+    "vendor": "Acme Apparel",
+    "categories": ["clothing", "tops", "t-shirts"],
+    "price": 19.99,
+    "rating": 4.5,
+    "inventory": 120,
+    "published_at": 1672531200,
+    "tags": ["bestseller", "summer"]
+  },
+  {
+    "id": "prod_002",
+    "title": "Running Shoes Pro",
+    "description": "Lightweight running shoes with excellent cushioning.",
+    "vendor": "SprintWorks",
+    "categories": ["footwear", "running"],
+    "price": 129.0,
+    "rating": 4.7,
+    "inventory": 60,
+    "published_at": 1675119600,
+    "tags": ["new", "performance"]
+  },
+  {
+    "id": "prod_003",
+    "title": "Bluetooth Headphones ZX",
+    "description": "Noise-cancelling over-ear headphones with 30h battery life.",
+    "vendor": "SoundLab",
+    "categories": ["electronics", "audio"],
+    "price": 199.5,
+    "rating": 4.3,
+    "inventory": 35,
+    "published_at": 1669852800,
+    "tags": ["audio", "wireless"]
+  },
+  {
+    "id": "prod_004",
+    "title": "Organic Green Tea",
+    "description": "Premium organic green tea leaves for a refreshing cup.",
+    "vendor": "Herb&Leaf",
+    "categories": ["grocery", "beverages"],
+    "price": 9.99,
+    "rating": 4.8,
+    "inventory": 240,
+    "published_at": 1656633600,
+    "tags": ["organic", "tea"]
+  },
+  {
+    "id": "prod_005",
+    "title": "Ergonomic Office Chair",
+    "description": "Adjustable lumbar support and breathable mesh for long workdays.",
+    "vendor": "ComfortDesign",
+    "categories": ["furniture", "office"],
+    "price": 349.99,
+    "rating": 4.6,
+    "inventory": 15,
+    "published_at": 1677800400,
+    "tags": ["office", "ergonomic"]
+  }
+]
